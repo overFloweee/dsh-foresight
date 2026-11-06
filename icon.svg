@@ -1,0 +1,15 @@
+<svg viewBox="0 0 128 128" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="dsh-foresight">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#3b4cc0"/>
+      <stop offset="1" stop-color="#6d5bd9"/>
+    </linearGradient>
+  </defs>
+  <rect width="128" height="128" rx="30" fill="url(#bg)"/>
+  <!-- 光标 -->
+  <rect x="28" y="30" width="7" height="68" rx="3.5" fill="#fff"/>
+  <!-- 已输入的一行，以及逐渐变淡的两行预测 -->
+  <rect x="46" y="34" width="56" height="12" rx="6" fill="#fff"/>
+  <rect x="46" y="58" width="44" height="12" rx="6" fill="#fff" opacity=".55"/>
+  <rect x="46" y="82" width="28" height="12" rx="6" fill="#fff" opacity=".28"/>
+</svg>

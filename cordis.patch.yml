@@ -1,0 +1,5 @@
+# dsh-foresight bundle patch：挂载同名 host 插件。
+# 条目 id 同时是 settings 命名空间与 client 寻址键，发布后不要改。
+- insert:
+  - id: dsh-foresight
+    name: dsh-foresight
