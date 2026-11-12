@@ -30,7 +30,15 @@ A composer add-on for DeepSeek Harness (DSH) Web. After each turn it predicts yo
 
 ## Install
 
-Requires DSH 0.2.x (load verified on 0.2.1-rc.5, see "Verified" below). Not published to npm yet. From source:
+Requires DSH 0.2.x (load verified on 0.2.1-rc.5, see "Verified" below).
+
+```bash
+dsh plugin --profile web add dsh-foresight
+```
+
+The desktop app's `desktop` profile is managed by the app itself, so the CLI refuses to edit it; install from the app's plugin page, or add the package by hand to that profile's `dependencies` and `dsh.profile.bundles`.
+
+From source:
 
 ```bash
 git clone https://github.com/overFloweee/dsh-foresight.git && cd dsh-foresight
@@ -52,6 +60,8 @@ Restart dsh and hard-refresh the page. Do not add the working directory as a `fi
 ## Verified and not verified
 
 Verified (2026-11-06): typecheck and build pass; 27 recall unit tests, the smoke tests and 7 end-to-end scripts pass. With DSH 0.2.1-rc.5 in an isolated `DSH_HOME`, the profile composes without a peer error and the browser half loads with no "Failed to load plugins".
+
+After publishing to npm (2026-11-12), `dsh plugin --profile web add dsh-foresight` installed it into a fresh isolated profile, and the web UI loaded with no "Failed to load plugins".
 
 Not verified: prediction quality, hit rate and latency with a real model; real-UI key handling of ↑/↓ recall (needs a session with history, and the isolated home has no model credentials); Windows and Linux; DSH 0.2.2 and 0.1.x kernels (the old peer ranges are kept but not re-run here).
 

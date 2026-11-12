@@ -1,0 +1,33 @@
+# 打版本标签（如 v0.1.1）时发布到 npm。
+#
+# 使用 npm 的 trusted publishing（OIDC）：不需要在仓库里存任何令牌。
+# 前提（只需在 npmjs.com 配一次）：包 dsh-foresight → Settings → Trusted publisher →
+# GitHub Actions，填入仓库 overFloweee/dsh-foresight 和本文件名 publish.yml。
+name: publish
+
+on:
+  push:
+    tags: ['v*']
+
+permissions:
+  contents: read
+  id-token: write
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          registry-url: https://registry.npmjs.org
+      - name: 标签必须与 package.json 的版本一致
+        run: |
+          version="$(node -p "require('./package.json').version")"
+          if [ "v${version}" != "${GITHUB_REF_NAME}" ]; then
+            echo "标签 ${GITHUB_REF_NAME} 与 package.json 的版本 v${version} 不一致" >&2
+            exit 1
+          fi
+      - name: 发布（lib/ 已随仓库提交，不在这里构建）
+        run: npm publish --provenance --access public

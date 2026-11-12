@@ -32,7 +32,13 @@ DeepSeek Harness（DSH）Web 输入框增强插件。回合结束后预测你的
 
 要求：DSH 0.2.x 系列（在 0.2.1-rc.5 上验证过加载，见下方「已验证」）。
 
-尚未发布到 npm。从源码安装：
+```bash
+dsh plugin --profile web add dsh-foresight
+```
+
+桌面端的 `desktop` profile 由应用自己管理，命令行不能直接改，请在应用的插件页安装，或手工把包加到该 profile 的 `dependencies` 和 `dsh.profile.bundles`。
+
+从源码安装：
 
 ```bash
 git clone https://github.com/overFloweee/dsh-foresight.git && cd dsh-foresight
@@ -69,6 +75,7 @@ Settings → Plugins 里的卡片，保存后即时生效，界面语言跟随 D
 已验证（2026-11-06）：
 - 类型检查和构建通过；召回的 27 条单元测试、冒烟测试和 7 组端到端脚本通过。
 - 在隔离的 `DSH_HOME` 里，用 DSH 0.2.1-rc.5 装入并启动 web：profile 组装不报 peer 不兼容，浏览器端插件加载成功且页面没有 “Failed to load plugins”。
+- 2026-11-12 发布到 npm 后，在全新的隔离 profile 里用 `dsh plugin --profile web add dsh-foresight` 一行命令安装，启动 web 后页面加载正常，没有 “Failed to load plugins”。
 
 未验证：
 - 真实模型下的预测质量、命中率和延迟。
