@@ -104,6 +104,10 @@
   "bugs": {
     "url": "https://github.com/overFloweee/dsh-foresight/issues"
   },
+  "publishConfig": {
+    "registry": "https://registry.npmjs.org/",
+    "access": "public"
+  },
   "keywords": [
     "dsh-plugin",
     "deepseek-harness",
